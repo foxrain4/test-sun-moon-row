@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sun & Moon Time Strip</title>
+  <style>
+    body {
+      background: radial-gradient(circle at center, #111, #000);
+      color: white;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .row {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .icon-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .label {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: #ccc;
+    }
+
+    svg {
+      width: 80px;
+      height: 80px;
+      transition: transform 0.5s;
+    }
+
+    svg:hover {
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+  <h2>Sun & Moon Strip</h2>
+  <div class="row">
+    <!-- Sun Phases -->
+    <div class="icon-wrapper">
+      <svg viewBox="0 0 24 24" fill="#FFD700">
+        <circle cx="12" cy="12" r="5" />
+      </svg>
+      <div class="label">Sunrise</div>
+    </div>
+    <div class="icon-wrapper">
+      <svg viewBox="0 0 24 24" fill="#FFCC00">
+        <circle cx="12" cy="12" r="5" />
+      </svg>
+      <div class="label">Early Day</div>
+    </div>
+    <div class="icon-wrapper">
+      <svg viewBox="0 0 24 24" fill="#FFA500">
+        <circle cx="12" cy="12" r="5" />
+      </svg>
+      <div class="label">Noon</div>
+    </div>
+    <div class="icon-wrapper">
+      <svg viewBox="0 0 24 24" fill="#FF8C00">
+        <circle cx="12" cy="12" r="5" />
+      </svg>
+      <div class="label">Afternoon</div>
+    </div>
+    <div class="icon-wrapper">
+      <svg viewBox="0 0 24 24" fill="#FF6347">
+        <circle cx="12" cy="12" r="5" />
+      </svg>
+      <div class="label">Sunset</div>
+    </div>
+    <div class="icon-wrapper">
+      <svg viewBox="0 0 24 24" fill="#DC143C">
+        <circle cx="12" cy="12" r="5" />
+      </svg>
+      <div class="label">Dusk</div>
+    </div>
+
+    <!-- Moon Phases -->
+    <div class="icon-wrapper">
+      <svg viewBox="0 0 24 24" fill="#D3D3D3">
+        <path d="M21 12.79A9 9 0 0111.21 3 7 7 0 0012 21a9 9 0 009-8.21z" />
+      </svg>
+      <div class="label">Moonrise</div>
+    </div>
+    <div class="icon-wrapper">
+      <svg viewBox="0 0 24 24" fill="#B0C4DE">
+        <path d="M21 12.79A9 9 0 0111.21 3 7 7 0 0012 21a9 9 0 009-8.21z" />
+      </svg>
+      <div class="label">Twilight</div>
+    </div>
+    <div class="icon-wrapper">
+      <svg viewBox="0 0 24 24" fill="#A9A9A9">
+        <path d="M21 12.79A9 9 0 0111.21 3 7 7 0 0012 21a9 9 0 009-8.21z" />
+      </svg>
+      <div class="label">Night</div>
+    </div>
+    <div class="icon-wrapper">
+      <svg viewBox="0 0 24 24" fill="#696969">
+        <path d="M21 12.79A9 9 0 0111.21 3 7 7 0 0012 21a9 9 0 009-8.21z" />
+      </svg>
+      <div class="label">Deep Night</div>
+    </div>
+    <div class="icon-wrapper">
+      <svg viewBox="0 0 24 24" fill="#2F4F4F">
+        <path d="M21 12.79A9 9 0 0111.21 3 7 7 0 0012 21a9 9 0 009-8.21z" />
+      </svg>
+      <div class="label">Moonset</div>
+    </div>
+    <div class="icon-wrapper">
+      <svg viewBox="0 0 24 24" fill="#1C1C1C">
+        <path d="M21 12.79A9 9 0 0111.21 3 7 7 0 0012 21a9 9 0 009-8.21z" />
+      </svg>
+      <div class="label">Last Light</div>
+    </div>
+  </div>
+</body>
+</html>
