@@ -2,77 +2,79 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sun & Moon Time Strip</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sun Moon Strip</title>
   <style>
     body {
       background: #111;
-      color: white;
+      color: #eee;
       font-family: sans-serif;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       padding: 2rem;
     }
-    .sky-strip {
+
+    .time-strip {
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 1rem;
+      flex-wrap: wrap;
       margin-top: 2rem;
     }
-    .time-icon {
-      width: 60px;
-      height: 60px;
-      transition: filter 0.5s;
-      opacity: 0.3;
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      opacity: 0.6;
+      transition: all 0.3s ease;
     }
-    .time-icon.active {
+
+    .active {
       opacity: 1;
-      filter: drop-shadow(0 0 8px white);
+      filter: drop-shadow(0 0 6px #fce38a);
+      transform: scale(1.2);
     }
+
     .label {
       margin-top: 0.5rem;
-      font-size: 0.9rem;
+      font-size: 0.75rem;
+      text-align: center;
       color: #aaa;
     }
   </style>
 </head>
 <body>
+  <h2>🌞🌚 Time of Day Strip</h2>
 
-  <h1>☀️🌙 Local Time Strip</h1>
-  <div class="sky-strip" id="skyStrip"></div>
+  <div class="time-strip" id="strip">
+    <!-- 12 SVGs from 6 AM to 6 PM -->
+    <!-- SVGs are placeholders; you can replace these with more elaborate ones -->
+    <div><svg class="icon" data-hour="6" viewBox="0 0 24 24" fill="gold"><circle cx="12" cy="12" r="6"/></svg><div class="label">6 AM</div></div>
+    <div><svg class="icon" data-hour="7" viewBox="0 0 24 24" fill="#ffcc00"><circle cx="12" cy="12" r="6"/></svg><div class="label">7 AM</div></div>
+    <div><svg class="icon" data-hour="8" viewBox="0 0 24 24" fill="#ffd700"><circle cx="12" cy="12" r="6"/></svg><div class="label">8 AM</div></div>
+    <div><svg class="icon" data-hour="9" viewBox="0 0 24 24" fill="#ffe066"><circle cx="12" cy="12" r="6"/></svg><div class="label">9 AM</div></div>
+    <div><svg class="icon" data-hour="10" viewBox="0 0 24 24" fill="#fff176"><circle cx="12" cy="12" r="6"/></svg><div class="label">10 AM</div></div>
+    <div><svg class="icon" data-hour="11" viewBox="0 0 24 24" fill="#ffff8d"><circle cx="12" cy="12" r="6"/></svg><div class="label">11 AM</div></div>
+    <div><svg class="icon" data-hour="12" viewBox="0 0 24 24" fill="#ffffff"><circle cx="12" cy="12" r="6"/></svg><div class="label">12 PM</div></div>
+    <div><svg class="icon" data-hour="13" viewBox="0 0 24 24" fill="#cccccc"><circle cx="12" cy="12" r="6"/></svg><div class="label">1 PM</div></div>
+    <div><svg class="icon" data-hour="14" viewBox="0 0 24 24" fill="#999999"><circle cx="12" cy="12" r="6"/></svg><div class="label">2 PM</div></div>
+    <div><svg class="icon" data-hour="15" viewBox="0 0 24 24" fill="#666666"><circle cx="12" cy="12" r="6"/></svg><div class="label">3 PM</div></div>
+    <div><svg class="icon" data-hour="16" viewBox="0 0 24 24" fill="#444"><circle cx="12" cy="12" r="6"/></svg><div class="label">4 PM</div></div>
+    <div><svg class="icon" data-hour="17" viewBox="0 0 24 24" fill="#222"><circle cx="12" cy="12" r="6"/></svg><div class="label">5 PM</div></div>
+  </div>
 
   <script>
-    const times = [
-      { hour: 4, label: 'Dawn', svg: '☀️' },
-      { hour: 8, label: 'Morning', svg: '🌤️' },
-      { hour: 12, label: 'Noon', svg: '☀️' },
-      { hour: 17, label: 'Dusk', svg: '🌇' },
-      { hour: 20, label: 'Evening', svg: '🌙' },
-      { hour: 0, label: 'Midnight', svg: '🌑' },
-    ];
-
     const now = new Date();
     const hour = now.getHours();
+    const targetHour = hour % 12 + 6; // map 0–23 to 6–17
+    const icons = document.querySelectorAll(".icon");
 
-    function getActiveIndex() {
-      // Find the nearest hour slot before current hour
-      for (let i = times.length - 1; i >= 0; i--) {
-        if (hour >= times[i].hour) return i;
+    icons.forEach(icon => {
+      if (parseInt(icon.dataset.hour) === targetHour) {
+        icon.classList.add("active");
       }
-      return 0;
-    }
-
-    const activeIndex = getActiveIndex();
-    const container = document.getElementById('skyStrip');
-
-    times.forEach((time, index) => {
-      const div = document.createElement('div');
-      div.innerHTML = `
-        <div class="time-icon ${index === activeIndex ? 'active' : ''}">${time.svg}</div>
-        <div class="label">${time.label}</div>
-      `;
-      container.appendChild(div);
     });
   </script>
-
 </body>
 </html>
